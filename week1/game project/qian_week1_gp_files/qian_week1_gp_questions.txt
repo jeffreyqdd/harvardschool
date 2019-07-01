@@ -1,0 +1,8 @@
+1. What was the most useful skill you gained this week?
+
+For me, the most useful skill I picked up this week was how to use getline(cin,dummy); to clear cin. Before I didn't know all the differences between cin>>, getline(), and get(), but now I can distinguish between each one and fix the problems that may arise when using cin and get().
+
+
+2. What was the most interesting "fact" you learned this week?
+
+Before I didn't know that precedence and associativity existed in C++. I always assumed that for example: x = y = z = 1; worked for some random reason. After knowing this, I now have more confidence about where I put my parentheses.
