@@ -1,0 +1,16 @@
+1. What feature(s) would you liked to have added to your game if you had an extra week to get it
+completed?
+
+
+If I had another week to add on to the game I would add more functionality to it. First of all, I would add better graphics in the output stream. This might include having multiple .txt files each containing a different image made out of characters to display. Furthermore, I would add more customizability to the game such as a difficulty setting.
+ 
+
+
+2. What was the most challenging part of this week’s assignment (you can reference anything from the
+problem set or the game project)
+
+In general the most challenging part of this week's assignment was learning how to write neat and efficient code. While viewing the Joe's hotdog stand walkthrough on Wednesday, I realized that there were many bad practices that I was doing. Some of which include not storing the cost of the items in a const double. So in this week's projects, I was actively trying to think of better, more efficient ways to write a certain lines of code. I still think there is a lot of room for improvement. 
+
+
+
+ 
