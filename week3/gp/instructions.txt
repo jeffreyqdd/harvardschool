@@ -1,0 +1,15 @@
+1. Each game consists of 4 slot with each slot containing one of 6 colors (blue, red, purple, orange, brown, green). 
+
+2. Each turn, the user of will guess which color is in each slot. Clue will help guide the user to the correct answer.
+
+3. Number of guesses that are in the correct color in the correct place will be indicated using a black peg.
+
+4. Number of guesses that are in the correct color in the wrong place will be indicated using a white peg.
+
+5. You will have 7 guesses to get the correct answer.
+
+6. Normal settings = unique colors in each slot.
+   Master settings = Random colors in each slot (repeats may occur).
+
+7. Good luck, have fun!
+

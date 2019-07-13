@@ -1,0 +1,18 @@
+------------- Welcome to Mastermind -------------
+		
+	     created by Jeffrey Qian
+
+To view game instructions use this command: -instructions
+
+
+To play on normal settings use this command: -play 0
+
+
+To play on master setting use this command: -play 1
+ 
+
+To reload this screen use this command: -reload
+
+
+To exit the game use this command: -quit
+
