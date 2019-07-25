@@ -1,0 +1,53 @@
+// ~ not yet asigned
+
+//0 property
+//1 Community_Chest
+//2 Chance
+//3 Jail
+//4 misc
+//5 tax
+//6 railroads
+
+[index] [name] [description] [type] [fees] [owner] [ownership cost] [house cost] [house multiplier] [limit]
+
+name ~ 0 fee ~ ownercost housecost housemulti limit
+
+0 Go Collect_200 4 200 ~ ~ ~ ~ ~
+1 Old_Rustic_Shack ~ 0 -5 ~ 60 50 60 4
+2 Community_Chest Draw_from_community_deck 1 ~ ~ ~ ~ ~ ~
+3 Old_Town_Road ~ 0 -10 ~ 60 50 65 4
+4 Income_Tax Pay_up! 5 10 ~ ~ ~ ~ ~
+5 King's_Cross_Station ~ 6 ~ ~ 100 ~ ~ ~
+6 Country_Village_Road ~ 0 -10 ~ 100 60 70 4
+7 Chance Draw_from_chance_deck 2 ~ ~ ~ ~ ~ ~
+8 White_Plains_Road ~ 0 -10 ~ 100 50 70 4
+9 Mountain_Lodge_Road ~ 0 -15 ~ 120 50 80 4
+10 Jail Just_visiting ~ 4 ~ ~ ~ ~ ~ ~
+11 Tall_Mall ~ 0 -18 ~ 120 100 90 4
+12 Pay_Day Collect_500 4 500 ~ ~ ~ ~ ~
+13 Micro_Outlet ~ 0 -20 ~ 140 120 110 4
+14 New_Town_Road ~ 0 -20 ~ 160 130 120 4
+15 Thomas_The_Engine_Station ~ 6 ~ ~ 200 ~ ~ ~
+16 Potato_Street ~ 0 -20 ~ 180 140 120 4
+17 Tomato_Street ~ 0 -25 ~ 180 150 120 4
+18 Carrot_Street ~ 0 -30 ~ 200 150 140 4
+19 Free_Parking Take_a_break 4 ~ ~ ~ ~ ~ ~
+20 Standard_Residences ~ 0 -32 ~ 220 150 150 4
+21 Chance Draw_from_chance_deck 2 ~ ~ ~ ~ ~ ~
+22 Miniscule_Apartments ~ 0 -35 ~ 250 150 160 4
+23 Chonky_Avenue ~ 0 -40 ~ 270 150 160 4
+24 Mountain_Side_Station ~ 6 ~ ~ 400 ~ ~ ~
+25 Tralfalgar Square ~ 0 -42 ~ 280 160 170 4
+26 FBI_Seizure You've_lost_all_your_money 5 100 ~ ~ ~ ~ ~
+27 Picadily ~ 0 -45 ~ 290 160 200 4
+28 Luxurious_Apartments ~ 0 -47 ~ 300 160 200 4
+29 Jail Whoops ~ 3 ~ ~ ~ ~ ~ ~
+30 Mountain_Villa ~ 0 -50 ~ 320 180 250 4
+31 Chungus's_Mansion ~ 0 -60 ~ 350 180 250 4
+32 Community_Chest Draw_from_community_deck 1 ~ ~ ~ ~ ~ ~
+33 Crystal_Lake_Mansion ~ 0 -70 ~ 350 180 250 4
+34 Liverpool_Station ~ 6 ~ ~ 800 ~ ~ ~
+35 Chance Draw_from_chance_deck 2 ~ ~ ~ ~ ~ ~
+36 Futuristic_Town_Road ~ 0 -100 ~ 400 200 300 4
+37 Antimatter_avenue ~ 0 -120 ~ 400 200 350 4
+38 Castle_in_the_Sky ~ 0 -130 ~ 1000 700 400 10

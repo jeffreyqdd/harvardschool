@@ -1,3 +1,21 @@
+/*
+Assignment: week 3 game project
+File name:  mastermind.cpp
+Name: Jeffrey Qian
+Compiler: Microsoft Visual Studio Code
+
+
+Note to instructors:
+
+Could you comment on my variable/function name usage? I feel like that's one of my main weak points.
+Throughout this whole gameproject I was having trouble comming up with unique names
+
+Thanks!
+
+*/
+
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,9 +27,15 @@ using namespace std;
 #define MAX_COLORS 6
 
 
+
+namespace Colors{
+    enum allColors{blue, red, purple, orange, brown, green};
+    string colorName[] = {"blue", "red", "purple", "orange", "brown", "green"};
+}
+
 //globals
 struct Game{
-    string answer[4] = {};
+    Colors::allColors answer[4] = {};
     int totalGuess = 0;
 };
 
@@ -21,7 +45,6 @@ vector<string> commands = {"-instructions",
                      "-reload",
                      "-quit"};
 
-string colors[] = {"blue", "red", "purple", "orange", "brown", "green"};
 
 //cout .txt file given file name
 void read_file(string fileName)
@@ -39,18 +62,19 @@ void read_file(string fileName)
 }
 //various game generations aka unique colors or not.
 //false == unique generation
+
 void generate_game(Game &g, bool repeat)
 {
     srand(time(0));
 
 
     //set keeps track of generated colors.
-    set<string> seen;
+    set<Colors::allColors> seen;
     int generated = 0;
 
     while(generated < 4)
     {
-        string s = colors[rand()%MAX_COLORS];
+        Colors::allColors s = Colors::allColors(rand()%MAX_COLORS);
 
 
         //only if unique
@@ -82,12 +106,13 @@ bool is_valid_guess(vector<string> v)
         bool flag = true;
         for(int i = 0; i < MAX_COLORS; i++)
         {
-            if(o == colors[i]) flag = false  ; 
+            if(o == Colors::colorName[i]) flag = false  ; 
         }
         if(flag) return false;
     }
     return true;
 }
+
 //since string.substr() does not fit this situation, I have to write my own
 string cut(int a, int b, string s)
 {
@@ -98,6 +123,28 @@ string cut(int a, int b, string s)
 
     return output;
 }
+
+//string --> enum, call by reference
+void convert_to_enum(vector<Colors::allColors> &enumV, const vector<string> &usrInput)
+{
+
+    for(int i = 0; i < 4; i++)
+    {
+        if(usrInput[i] == Colors::colorName[Colors::blue])
+            enumV[i] =  Colors::blue;
+        else if(usrInput[i] == Colors::colorName[Colors::red])
+            enumV[i] =  Colors::red;
+        else if(usrInput[i] == Colors::colorName[Colors::purple])
+            enumV[i] =  Colors::purple;
+        else if(usrInput[i] == Colors::colorName[Colors::orange])
+            enumV[i] =  Colors::orange;
+        else if(usrInput[i] == Colors::colorName[Colors::brown])
+            enumV[i] =  Colors::brown;
+        else if(usrInput[i] == Colors::colorName[Colors::green])
+            enumV[i] =  Colors::green;
+    }
+}
+
 
 //turns string into 4 items in vector
 vector<string> unpack(string s)
@@ -118,14 +165,16 @@ vector<string> unpack(string s)
     //last color left
     unpacked.push_back(cut(start,s.length(),s));
 
-    /*for(auto o : unpacked)
-    {
-        cout << '('<< o << ')' << " ";
-    }
-    cout << endl;*/
+    //for(auto o : unpacked)
+    //{
+    //    cout << '('<< o << ')' << " ";
+    //}
+    //cout << endl;
 
     return unpacked;
 }
+
+
 //main logic section of the code
 void play(Game &currentRound)
 {
@@ -138,21 +187,27 @@ void play(Game &currentRound)
 
         //upack
         string s; getline(cin, s);
-        vector<string> usrGuess = unpack(s);
+        vector<string> input = unpack(s);
 
         //check if guess is valid
-        if(!is_valid_guess(usrGuess))
+        if(!is_valid_guess(input))
         {
             cout << "You did not write the correct colors/format\n";
             continue;
         }
+        //valid: continue
+        
+        //wacky segmentation fault because I didn't initialize starting size
+        //oops
+        vector<Colors::allColors> usrGuess(4);
+        convert_to_enum(usrGuess, input);
 
         //2. update data
         currentRound.totalGuess++;
 
         int black = 0, white = 0;
 
-        //treat as non-distinct. Will encompass distinct case
+        //treat as non-distinct. Will encompass distinct cases
         //count how many of each color appears
         
         /*
@@ -160,38 +215,37 @@ void play(Game &currentRound)
 
             Thought process for non -distinct
 
-            say we input r r r r and the answer was r g r g
+            keep track of each occurance of each color in answer
+            keep track of each occurance of each color in guess
 
-            we count 2 total g and 2 total r colors in the answer
-            
-            this way we don't overcount the number of r's
+            process blacks first, decrement answer and guess if seen
+            process whites next, do the same thing
 
-            we process black pegs first so
-            black = 2
-            white = 0
-
-            input r r g g, answer g g r b
-
-            we count 2 g, 1 r, and 1 b
-
-            we first process blacks
-            black = 0
-
-            then we process whites
-            r = 1 valid space, g = 2 valid space
-
-            black = 0
-            white = 3
+            this prevents overcounting/miscouning of guesses for non-distict.
         */
+        
         int colorCnt[] = {0,0,0,0,0,0};
+        int guessCnt[] = {0,0,0,0,0,0};
+
         for(int i = 0; i < 4; i++)
         {
             for(int j = 0; j < MAX_COLORS; j++)
             {
-                if(currentRound.answer[i] == colors[j]) colorCnt[j] += 1;
+                //cout << currentRound.answer[i] << " : "  << Colors::allColors(j);
+                if(currentRound.answer[i] == Colors::allColors(j))
+                {   
+                    colorCnt[j] += 1;
+                    //cout << "-> here";
+                }
+                //cout << endl;
+
+                if(usrGuess[i] == Colors::allColors(j))
+                    guessCnt[j] += 1;
             }
         }
-
+        /*for(auto o : colorCnt)
+            cout << o << " ";
+        cout << endl;*/
         //check black peg
         for(int i = 0; i < 4; i++)
         {
@@ -201,9 +255,10 @@ void play(Game &currentRound)
                 //update color count
                 for(int k = 0; k < MAX_COLORS; k++)
                 {
-                    if(usrGuess[i] == colors[k])
+                    if(usrGuess[i] == Colors::allColors(k))
                     {
                             colorCnt[k]--;
+                            guessCnt[k] --;
                             black++;
                             break;
                     }
@@ -223,9 +278,11 @@ void play(Game &currentRound)
                     //update color count
                     for(int k = 0; k < MAX_COLORS; k++)
                     {
-                        if(( usrGuess[i] == colors[k]) && (colorCnt[k] > 0))
+                        if(( usrGuess[i] == Colors::allColors(k)) && (colorCnt[k] > 0 
+                             && guessCnt[k] > 0))
                         {
                             colorCnt[k]--;
+                            guessCnt[k]--;
                             white++;
                             break;
                         }
@@ -233,7 +290,7 @@ void play(Game &currentRound)
                 }
             }
         }
-
+        
         //cout << black << " : " << white << endl;
 
 
@@ -242,7 +299,7 @@ void play(Game &currentRound)
         cout << '[';
         for(int i = 0; i < 4; i++)
         {
-            cout << usrGuess[i];
+            cout << Colors::colorName[usrGuess[i]];
             if(i < 3) cout << ',';
         }
         cout << ']' << endl;
@@ -255,10 +312,14 @@ void play(Game &currentRound)
             cout << "That was the correct guess!!\n...returning to main menu...\n\n\n";
             return;
         }
+        
     }
     //lose
     cout << "Sorry, your 7 guesses were used up. \nThe correct answer was: ";
-    for(auto o : currentRound.answer){cout << o << " "; }cout  << endl;
+    for(auto o : currentRound.answer){cout << Colors::colorName[o] << " "; }
+    cout  << endl << endl;
+
+
 
 }
 

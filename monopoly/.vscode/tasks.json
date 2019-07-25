@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build monopoly project",
+            "type": "shell",
+            "command": "c++",
+            "args": [
+                "-std=c++11",
+                "-stdlib=libc++",
+                "-g",
+                "-o",
+                "monopoly",
+                "main.cpp",
+                "cpu.cpp",
+                "graphics.cpp",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -1,3 +1,10 @@
+/*
+Assignment: week 3 problem set
+File name:  qian_week3_ps.cpp
+Name: Jeffrey Qian
+Compiler: Microsoft Visual Studio Code
+*/
+
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -11,6 +18,7 @@ using namespace std;
 
 #define LENGTH 256
 
+//namespaces for each problem
 namespace JoeShop{
     enum Menu {hotdogs, fries, drinks};
     const double stuffPrice[] = {1.00, 2.00, 3.00};
@@ -200,6 +208,7 @@ void clean_text(char s[])
 
 bool is_pallindrome()
 {
+    //compare start to end, end --> start
     int strLength = strlen(ProblemTwo::cleanedStr);
 
     for(int i = 0, j = strlen(ProblemTwo::cleanedStr)-1; i < strlen(ProblemTwo::cleanedStr); i++, j--)
@@ -331,6 +340,4 @@ int main()
         
         generate_card();
     }
-
-    
 }

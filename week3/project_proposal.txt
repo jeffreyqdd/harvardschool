@@ -1,0 +1,7 @@
+I will be creating a board game based off of Monopoly.
+
+In a nutshell, a player wins by making others go bankrupt. The game will support up to 4 players. Each player's stats will be represented using a game struct. Each square on the board will be an array of structs. Say arr[5] will yield the 6th square's name type, ownership, rent cost, etc. I plan to add chance cards, also represented by structs, that will also have their own properties. I plan to devise a standard format to represent/pass the data to streamline function-to-function communication. As for the file I/O, I could log game events.
+
+Game flow will be automated. The program will prompt the user to make decisions if necessary and inform the user about any changes made. Furthermore, if time allows, I will add cpu-controlled characters to play in place of human-counterparts. The cpu controlled characters will not run off of artificial networks (I'm not sure I can pull that off), but instead off of simple logic based if-else statements.
+
+The game will run off a simple console output. Illustrations and game graphics will entirely consist of text-based art.
