@@ -1,0 +1,4 @@
+Jake Bill 100 100 90
+Duck Dill 70 80 3
+Joe Bob 0 0 0 0 92 32 12 54
+Aaron Jones 12 78 96 43 123 56 23 

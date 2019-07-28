@@ -28,7 +28,7 @@
         "streambuf": "cpp",
         "string_view": "cpp",
         "typeinfo": "cpp",
-        "sstream": "cpp"
+        "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

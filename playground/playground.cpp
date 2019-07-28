@@ -4,12 +4,7 @@ using namespace std;
 
 int main()
 {
-    char text[] = "this is a test";
-    
-    //only one line of text;
-    text = string(text).substr(0,4).c_str();
-    
-    
-    cout << text << endl; // output : "this"
-    return 0;
+    const int n = 3;
+    int x = n;
+
 }
