@@ -32,7 +32,10 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "string_view": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "ctime": "cpp",
+        "deque": "cpp",
+        "chrono": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -12,8 +12,7 @@
                 "-o",
                 "monopoly",
                 "main.cpp",
-                "cpu.cpp",
-                "graphics.cpp",
+                "display.cpp"
             ],
             "group": {
                 "kind": "build",

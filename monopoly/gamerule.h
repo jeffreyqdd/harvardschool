@@ -4,5 +4,8 @@
 #define ADD_MONEY 200
 #define MAX_DOUBLE_ROLL 3
 #define BANKRUPTCY 0
-#define MAX_HOUSE 4
 #define INCOME_TAX 0.10
+#define DATA "game_data.txt"
+#define TOTAL_TILES 38
+#define MAX_TILE_INDEX 37
+#define MAX_PLAYERS 4
