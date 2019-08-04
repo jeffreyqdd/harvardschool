@@ -4,16 +4,15 @@
 using namespace std;
 
 
-
 namespace Display
 {
     void delay(int n)
     {
         this_thread::sleep_for(chrono::milliseconds(n));
     }
-    void display_player_name(string playerName)
+    void display_player(string playerName, int balance)
     {
-        cout << "----------" << playerName << "----------" << endl << endl;
+        cout << "----------" << playerName << ": $" << balance << "----------" << endl << endl;
         delay(1000);
     }
 
@@ -21,5 +20,14 @@ namespace Display
     {
         cout << s << endl;
         delay(1000);
+    }
+
+    void display_tile(string pName, int pPosition, string cName, string cDescription)
+    {
+    cout << pName << " has made it to tile " << pPosition << ":\n\n"
+         << cName << endl
+         << ((cDescription == "~") ? "": (cDescription + "\n"))
+         << endl;
+
     }
 }

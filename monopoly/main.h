@@ -73,7 +73,7 @@ public:
 
 class Tile //individual tile
 {
-private:
+protected:
     string m_name;
     string m_description;
     string m_type;
@@ -82,17 +82,18 @@ public:
     string get_name() const;
     string get_description() const;
     string get_type() const;
-
+    
+    virtual void dummy_function();
+    
     friend ostream& operator<< (ostream &os, const Tile &obj)
     {
         os << obj.m_name << endl << ((obj.m_description == "~" ? "":obj.m_description)) << endl;
 
         return os;
     }
-    friend class Property;
-    friend class Station;
-    friend class Tax;
-    friend class Misc;
+
+
+
 };
 
 class Property: public Tile
@@ -105,16 +106,11 @@ private:
     int m_houseMulti;
     int m_limit; 
 public:
-    void init(string, string, string, string, int, int, int, int, int);
+
+    Property(string,string, string, string, int, int, int, int, int);
     
-    string get_owner() const;
-    int get_rent() const;
-    
-    void set_owner(); //used with buy property
-    void set_rent(); //used with buy house
-    
-    void buy_property();
-    void buy_house();
+    void update_rent(int); //used with buy house, changes rent cost
+    void tick_property(Player&);
     
 };
 
@@ -124,10 +120,9 @@ private:
     string m_owner;
     int m_ownerCost;
 public:
-    void init(string, string, string, string, int);
+    Station(string, string, string, string, int);
 
-    string get_owner() const;
-    void buy_station();
+    void tick_station(Player&);
 };
 
 class Tax: public Tile
@@ -135,8 +130,8 @@ class Tax: public Tile
 private:
     int m_rate;
 public:
-    void init(string, string, string, int);
-    int get_rate() const;
+    Tax(string, string, string, int);
+    void tick_tax();
 };
 
 class Misc: public Tile
@@ -144,8 +139,9 @@ class Misc: public Tile
 private:
     int m_fee;
 public: 
-    void init(string, string, string, int);
-    int get_fee() const;
+    Misc(string, string, string, int);
+    
+    void tick_misc(Player &p)
 };
 
 
@@ -162,7 +158,7 @@ namespace UserInputs
 //game data
 namespace Game
 {
-    Tile board[TOTAL_TILES];
+    vector<Tile*> board;
     Player person[MAX_PLAYERS];
     string chance[20];
     string community[20];
