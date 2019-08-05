@@ -143,7 +143,7 @@ Type: Property
 Name: Tomato_Street
 Description: ~
 Owner: ~
-Fee: -0
+Fee: 24
 OwnerCost: 180
 HouseCost: 140
 HouseMulti: 120

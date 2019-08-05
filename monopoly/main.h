@@ -48,8 +48,10 @@ private:
     int m_balance;
     int m_position;
     int m_type;
+
+    int m_weight; //for computer use only
 public:
-    void init(string, int, int, int);
+    void init(string, int, int, int, int);
 
     string get_name() const;
     int get_balance() const;
@@ -61,15 +63,34 @@ public:
 
     void roll_dice(int&,int&);
 
+
+    string make_property_decision(int cost) //calculates percentage of cost in relation to balance..buys if under certain threshold (m_weight)
+    {
+        if(cost < m_balance)
+        {
+            double percentage = (double) cost / (double) m_balance * 100.0;
+            if(percentage < m_weight)
+                return "y";
+            else
+                return "n";
+        }
+        else
+        {
+            return "n";
+        }
+        
+    }
+    string make_house_decision()
+    {
+        return "y";
+    }
+    int how_many_house()
+    {
+        return 4;
+    }
+    
 };
 
-class Computer: public Player //inheritance 
-{
-private:
-    
-public:
-    
-};
 
 class Tile //individual tile
 {
@@ -83,9 +104,17 @@ public:
     string get_description() const;
     string get_type() const;
     
-    virtual void dummy_function();
+    virtual string get_owner() //polymorphism with inheritance classes.
+    {
+        return "~";
+    }
+    virtual void set_owner(string) //you shouldn't even be in this virtual function
+    {
+        cout << "you shouldn't be here" << endl;
+        int n = 1;
+    }
     
-    friend ostream& operator<< (ostream &os, const Tile &obj)
+    friend ostream& operator<< (ostream &os, const Tile &obj) //operator overide for debugging
     {
         os << obj.m_name << endl << ((obj.m_description == "~" ? "":obj.m_description)) << endl;
 
@@ -106,11 +135,13 @@ private:
     int m_houseMulti;
     int m_limit; 
 public:
+    string get_owner();
+    void set_owner(string);
 
     Property(string,string, string, string, int, int, int, int, int);
     
     void update_rent(int); //used with buy house, changes rent cost
-    void tick_property(Player&);
+    void tick_property(Player&); //case handling
     
 };
 
@@ -120,9 +151,12 @@ private:
     string m_owner;
     int m_ownerCost;
 public:
+    string get_owner();
+    void set_owner(string);
+
     Station(string, string, string, string, int);
 
-    void tick_station(Player&);
+    void tick_station(Player&); //case handling.
 };
 
 class Tax: public Tile
@@ -131,7 +165,7 @@ private:
     int m_rate;
 public:
     Tax(string, string, string, int);
-    void tick_tax();
+    void tick_tax(Player &p); //cases
 };
 
 class Misc: public Tile
@@ -141,7 +175,7 @@ private:
 public: 
     Misc(string, string, string, int);
     
-    void tick_misc(Player &p)
+    void tick_misc(Player &p); //cases
 };
 
 
@@ -168,3 +202,4 @@ namespace Game
 void load_data();
 void load_player_data();
 void play_game();
+void file_for_bankruptcy(Player&);
