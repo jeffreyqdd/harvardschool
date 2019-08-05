@@ -6,7 +6,7 @@ using namespace std;
 
 namespace Display
 {
-    int millisecond = 10; //delay after cout
+    int millisecond = 0; //delay after cout
 
     void delay(int n)
     {

@@ -1,57 +1,19 @@
-/*  Some housekeeping. Constants to keep througout the whole program: meanings of symbols and tile type.
-
-    // ! = null, ~ not yet assigned
-
-    Types
-    property
-    Community_Chest
-    Chance
-    Jail
-    misc
-    tax
-    railroads
-
-    Classification keywords
-    Type:
-    Name:
-    Description:
-    Fee:       
-    Owner:
-    OwnerCost:
-    HouseCost:
-    HouseMulti:
-    Limit:
-    Rate:
-
-
-
-Type: Property
-Name:
-Description:
-Owner:
-Fee:
-OwnerCost:
-HouseCost:
-HouseMulti:
-Limit:
-END
-
-*/
 
 
 //player data
 
+// TODO: Add a BotPlayer
 class Player
 {
-private:
+protected:
     string m_name;
     int m_balance;
     int m_position;
-    int m_type;
 
-    int m_weight; //for computer use only
+    bool is_inJail = false;
+
 public:
-    void init(string, int, int, int, int);
+    Player(string, int, int);
 
     string get_name() const;
     int get_balance() const;
@@ -63,8 +25,36 @@ public:
 
     void roll_dice(int&,int&);
 
+    void credit(int); //money into;
+    void debit(int); //money out of
 
-    string make_property_decision(int cost) //calculates percentage of cost in relation to balance..buys if under certain threshold (m_weight)
+    //virtual for polymorphism
+    virtual string make_property_decision(int cost) //usr input
+    {
+        string answer; getline(cin, answer);
+        return answer;
+    }
+    virtual int how_many_house(int cost) //TODO: input filter.
+    {
+        int howMany; cin >> howMany;
+        return howMany;
+    }
+
+
+};
+
+class Bot: public Player
+{
+private:
+    int m_weight; //for computer use only [50..100] m_botAggressiveness 
+
+public:
+    //constructor
+    Bot(string, int, int, int);
+
+    // calculates percentage of cost in relation to balance..buys if under certain threshold (m_weight)
+    //takes input cost of property and outputs y/n
+    string make_property_decision(int cost) 
     {
         if(cost < m_balance)
         {
@@ -80,38 +70,39 @@ public:
         }
         
     }
-    string make_house_decision()
+
+    // calculates how many houses to buy
+    int how_many_house(int cost)
     {
-        return "y";
-    }
-    int how_many_house()
-    {
-        return 4;
+        return rand()%5 ; //[0,4]
     }
     
 };
 
-
-class Tile //individual tile
+class Tile //individual tile, base class
 {
-protected:
+protected: //protected for easy access.
     string m_name;
     string m_description;
     string m_type;
-public:
 
+public:
     string get_name() const;
     string get_description() const;
     string get_type() const;
-    
+
+    virtual void tick(Player*)
+    {
+        cout << "you shouldn't be here" << endl;
+    }
     virtual string get_owner() //polymorphism with inheritance classes.
     {
+        //will be here if no owner
         return "~";
     }
     virtual void set_owner(string) //you shouldn't even be in this virtual function
     {
         cout << "you shouldn't be here" << endl;
-        int n = 1;
     }
     
     friend ostream& operator<< (ostream &os, const Tile &obj) //operator overide for debugging
@@ -121,11 +112,15 @@ public:
         return os;
     }
 
-
+    ~Tile()
+    {
+        cout << "destroyed\n";
+        Display::delay(0);
+    }
 
 };
 
-class Property: public Tile
+class Property: public Tile //inheritance 
 {
 private:
     string m_owner;
@@ -141,11 +136,11 @@ public:
     Property(string,string, string, string, int, int, int, int, int);
     
     void update_rent(int); //used with buy house, changes rent cost
-    void tick_property(Player&); //case handling
+    void tick(Player*); //case handling
     
 };
 
-class Station: public Tile
+class Station: public Tile //inheritance 
 {
 private:
     string m_owner;
@@ -156,26 +151,26 @@ public:
 
     Station(string, string, string, string, int);
 
-    void tick_station(Player&); //case handling.
+    void tick(Player*); //case handling.
 };
 
-class Tax: public Tile
+class Tax: public Tile //inheritance  
 {
 private:
     int m_rate;
 public:
     Tax(string, string, string, int);
-    void tick_tax(Player &p); //cases
+    void tick(Player*); //cases
 };
 
-class Misc: public Tile
+class Misc: public Tile //inheritance 
 {
 private:
     int m_fee;
 public: 
     Misc(string, string, string, int);
     
-    void tick_misc(Player &p); //cases
+    void tick(Player*); //cases
 };
 
 
@@ -193,7 +188,7 @@ namespace UserInputs
 namespace Game
 {
     vector<Tile*> board;
-    Player person[MAX_PLAYERS];
+    Player* person[MAX_PLAYERS];
     string chance[20];
     string community[20];
 };
@@ -202,4 +197,5 @@ namespace Game
 void load_data();
 void load_player_data();
 void play_game();
-void file_for_bankruptcy(Player&);
+void unload_data();
+void file_for_bankruptcy(Player*);

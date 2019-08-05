@@ -215,9 +215,9 @@ HouseMulti: 200
 Limit: 4
 END
 Type: Tax
-Name: FBI_Seizure
-Description: You've_lost_all_your_money
-Rate: 100
+Name: Absurd_Taxes
+Description: I_guess_new_legislature_was_passed
+Rate: 51
 END
 Type: Property
 Name: Picadily
