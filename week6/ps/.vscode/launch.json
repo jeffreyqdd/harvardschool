@@ -8,7 +8,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/story",
+            "program": "${workspaceFolder}/ps6",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

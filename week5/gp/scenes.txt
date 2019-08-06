@@ -1,1 +1,91 @@
-@1 you are very gayyyyy
+@1
+You wake up in a cold sweat. You dreamt last night but you aren’t sure what you saw in your dreams. All you recall is a deep voice whispering to you. It was hazy and you aren’t sure what it said.
+You look around the room. Someone or something has been here. The walls, before a rich, dark forest green color, are now completely ruined. Scratch marks run across the whole room, and the wallpaper is peeling. Your eyes casually dart to the paintings you’ve freshly hung last week– ruined, canvas torn up and trampled on the ground.
+What do you do?
+#
+2 go sleep
+3 assess the situation
+4 look around
+@2
+After pondering your choices for a while, you’ve decided to hope this is all a bad dream. You go back to sleep. This time you bury your head under the pillows and drape the sheets over your entire body. You try to detach your thoughts from the reality of things.
+Before long, you drift into uncertain slumber. In your dreams, you are floating mid-air across a deep chasm. Dark tendrils spiral out from under as the figure comes closer. You now see him in more detail. He is huge. Rich grey and white fur spans across its entire body. His extremities are of epic proportions. You then catch his large, ovallish eyes. His gaze pierces into your soul, shattering what’s left of your existence. You never wake from your nap…. THE END.
+#
+@3
+You sit up and assess. Your name is Timmy, and you live with your parents in a quiet, two story house in a suburban neighborhood. Your room is a mess, there is an open, dangling window to the left of your bed. Your eyes shift to the open closet door which you are certain that you closed before you slept last night. The bedroom door was slammed shut, the indicator being the cracked drywall around the door frame. The house is eerily silent. The time is 8 am, surely your parents would be up, banging at your door on a weekday.
+#
+4 look around
+@4
+You decided to get up and look around the room, so you quickly get dressed. You then sit on your bed thinking of what to examine.
+#
+5 Under your bed
+6 In the Closet
+7 Open the Door
+@5
+You decide to look under the bed. Using your phone as a flashlight, you get on all fours and start to observe the underside of your bed. You see absolutely nothing, only some snack wrappers, dirty socks, and spiderwebs.
+#
+4 Go back
+@6
+You slowly walk towards the closet, taking extreme caution to not make a sound. Ironically, the floorboards under you creak louder the slower you walk. After a tense few seconds, you’ve made it to the closet door.
+You peek inside, nothing’s changed. Just your old jackets and clothing. Your eyes wander to the top shelf and see a mysterious box.
+.
+.
+.
+You plop the box down on your bed and you open it up. The box in general was just dull. Solid brown with nothing on the outside. Inside the box is a notecard. You pick it up and start to read.
+	
+     Dear Timmy, 
+          I’m coming for you:)
+
+     Sincerely,
+     C.
+
+The box falls to the floor as you hold the notecard in pure horror...
+#
+4 Go Back
+@7
+You cautiously open the door and peek into the hallway. The once inviting hallway full of sunlight and warmth was now ruined. The single lightbulb at the top was dangling and flashing. Claw marks covered both sides of the hall. Your mom’s favorite flowers lay withered on the ground, their vases broken. 
+You look ahead. The door to your brother’s room is open. You hear a faint plopping sound coming from your brother’s bedroom. You catch a glimpse of the horrifying figure through the reflection off of the door handle. The figure’s eyes seemed to glow an ominous black. 
+You notice that the plopping sound has stopped and the figure is looking at your reflection on the doorknob.
+#
+8 RUN!
+9 Hope he didn’t see you and tip-toe down the stairs.
+@8
+You decide to make a run for it, and sprint down the hallway. Not even 2 steps past the door, you step on broken china and it stabs the sole of your foot. You gasp in pain and fall down on the floor in one big thump. You try to contain your screams, but it is too late. The figure notices your presence and comes to end you.
+
+You only catch a glimpse of his huge feet it knocks you unconscious ...THE END.
+#
+@9
+Trying to contain your heavy breaths, you carefully maneuver yourself around the broken china and down the stairs. Without thinking, you look back to see if the figure has moved. To your surprise, the figure is nowhere to be seen. Your heart is thumping as you continue on your descent onto the first floor.
+
+As you descend carefully, you take extreme caution not to make any sounds. Again, the floor creaks under your feet and every step causes a rush of adrenaline through your body. 
+
+You finally arrive on the first floor and breath a sigh of release...the front door is only a few steps away you can make your escape. You suddenly hear footsteps coming from your parent’s bedroom the right of the front door...oh dear you think to yourself..what do I do now
+#
+10 Go to the kitchen
+11 Go to the Living room
+12 Sprint out the front door
+@10
+You quickly scramble to the kitchen thinking why on earth you picked the kitchen out of all places. Once in the kitchen, you furiously open drawers and cabinets (and making a lot of noise in the process) to find some suitable defense. You can hear the thumping come closer and closer as you scramble to find something else other than Kellog’s Lucky Charms Cereal. You scream as the thumping comes closer…
+#
+13 Make a last stand using the power of lucky charms
+@11
+You sprint to the living room not knowing why you picked this place. There was absolutely nothing in the living room. Just a couch, table, a television set….and….a picture of shrek??..no..not now..you shouted as your mind brought you back to an embarrassing flashback. 
+
+It was a few years back when you were bullied at school for owning all of the Shrek merchandise. You had the Shrek t-shirt, backpack, and all of the Shrek action figures. You were a Shrek Nerd. Your grades were at their lowest point: Low Cs and instead of studying, you spent your time watching the Shrek movies. It was to the point where you could recite the Shrek 1,2,3, and 4 movie scripts by heart. It was heartbreaking. Your obsession brought shame upon your entire family. This led your father to punish you severely, and your brother to treat you as an outcast. This trauma emotionally scarred your childhood and rendered you as an insecure and moody teenager.
+
+The flashback ended with you standing there and crying...you used to love Shrek, but you were pushed away by what other people thought of you. The emotions are overwhelming. You are brought down on your knees. When the footsteps are right behind you, you can’t bring yourself to run away…...You feel the figure come closer and wrap his ginormous hands around you blocking out your vision. Those are the last things you remember: Shrek’s beautiful green face and the course fur wrapping around you depriving you of oxygen.
+#
+@12
+You try to sprint with all your energy to escape through the door and you make it. You manage to open the door and jump outside onto the grass...the figure follows suit, busting through and destroying the front entrance. Now the figure is in broad daylight and you can fully see your pursuer’s true form…..but you don’t. You get on your feet and you continue to run away from the horrific figure….You are safe for now…….THE END
+#
+@13
+You turn around screaming your battle cry as you face the monster before you. Now in broad daylight, you see him in shocking detail. He was huge and round. Grey fur outlined his extremities, and coarse white fur filled his stomach area. His large ovalish pupils were empty yet they perfectly reflected the sun’s rays.  
+
+You raise your cereal box and charge. The figure seemed surprised…
+
+“Hehe,” you said to yourself, “I have the element of sur–?”
+ 
+Those were your last thoughts as the figure sent you flying back with one powerful swipe. You hear your bones crunch as you crash into the stovetop. 
+
+The world slowly spiraled out of focus as you stared at the box of Lucky Charms beneath C…. The End.
+#
+@

@@ -5,18 +5,20 @@
 //# means jump to scenario #
 
 
-
-#include <iostream>
-#include <fstream>
+#include <string>
 using namespace std;
 
-#include "main.h"
-#include "graphics.h"
+#define TEXT_FILE "scenes.txt"
 
+#include "engine.h"
+
+
+//probably the shortest main code I've ever written.
 int main()
-{
-    ifstream fin("scenes.txt");
-    
+{    
+    You Game;
+
+    while (Game.tick(TEXT_FILE));
 
     return 0;
 }

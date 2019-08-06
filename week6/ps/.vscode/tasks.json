@@ -10,9 +10,8 @@
                 "-stdlib=libc++",
                 "-g",
                 "-o",
-                "story",
+                "ps6",
                 "main.cpp",
-                "engine.cpp"
             ],
             "group": {
                 "kind": "build",

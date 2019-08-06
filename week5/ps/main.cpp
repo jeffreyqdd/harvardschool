@@ -54,7 +54,7 @@ takes string, splits it into numbers, and adds it
 */
 void add_str()
 {
-    string numbers = "1 2 3 4 5 6";
+    string numbers = "1 2 3 100 5 6";
     stringstream ss;
     
     ss << numbers;
@@ -157,12 +157,19 @@ void read_file_2()
 /*
 solves problem 3 part three
 */
-//sorting function
+//sorting function (bubble sort)
 //sorts classes based off of highest grade average
-bool comp(const Student &a, const Student &b)
+void bubble_sort(Student a[], int length)
 {
-    return a.m_average > b.m_average;
+    for(int i = 0; i < length - 1; i++)
+    {
+        for(int j = 0; j < length - 1; j++)
+        {
+            if(a[j].m_average < a[j+1].m_average) swap(a[j], a[j+1]);
+        }
+    }
 }
+
 //reads names and grades, sorts the students by class averages, and writes to new file
 void read_file_3()
 {
@@ -172,12 +179,9 @@ void read_file_3()
     //incorporate gracefully crashing
     try
     {
-
         //dynamically allocate
         Student *startArr;
         startArr = new Student[len];
-
-
 
         //files
         ifstream fin("students.txt");
@@ -189,7 +193,7 @@ void read_file_3()
             exit(-1);
         }
 
-
+        //for each student
         for(int i = 0; i < len; i++)
         {
             //read one student at a time
@@ -220,7 +224,7 @@ void read_file_3()
             startArr[i] = s;
         }
         //sort class using comp function written above
-        sort(startArr, startArr + len, comp);
+        bubble_sort(startArr, len);
 
         //display
         for(int i = 0; i < len; i++)
