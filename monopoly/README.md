@@ -1,4 +1,4 @@
-#intro
+# intro
 This is a C++ version of the popular board game Monopoly. It was written as the final project for the class Introduction to C++ programming. 
 
 
@@ -6,13 +6,13 @@ Monopoly by nature is a complicated game because there are many different outcom
 
 When you export Monopoly from the physical world and into the coding world, it becomes a totally different story. We have to hand over the case handling to the computer and not the brain.
 
-#In a nutshell
+# In a nutshell
 
 The goal of the game is to be the last one standing. A player does this buy sending the other players into debt aka making other players bankrupt. The player achieves this through buying properties, constructing houses over owned properties, clever money management, and a lot of luck. 
 
-#Thought process and explanations
+# Thought process and explanations
 
-##Tiles
+## Tiles
 The game board consists of one type of entity: Tiles. It is true that there are many **types** of tiles, so there exists categories of Tiles:
 1. Property tiles - ownable buy players, and are able to have houses constructed.
 * This means the rent of the property is not static due to the fact that houses raise the rent.
@@ -30,7 +30,7 @@ The game board consists of one type of entity: Tiles. It is true that there are 
 Hence I've used classes and class inheritance to make the code cleaner and more efficient: 
 
 
-###Tile Class
+### Tile Class
 Basic class diagram drawing
 
                       -> Derived class Property
@@ -43,7 +43,7 @@ We are storing a pointer to Tile so that we can access the derived classes using
 The one thing in common for ALL the types of tiles is a tick() function (case handling of that specific tile the player lands in)
 
 
-'''c++
+'''C++
 virtual void tick()
 {
     //case handling
@@ -53,7 +53,7 @@ virtual void tick()
 This allows the program to choose which tick function is best suited. This results in cleaner code in the main logic as the cases are handled elsewhere.
 
 
-###Player Class
+### Player Class
 
 Base class Player ->  Derived class Bot
 
@@ -61,7 +61,7 @@ The good thing of player monopoly one the computer is that bots can be generated
 
 Once again using virtual, these classes can achieve polymorphism.
 
-'''c++
+'''C++
 virtual string make_property_decision()
 {
     //returns player decision using cin
@@ -75,8 +75,8 @@ virtual string make_property_decision()
 The bots in the game are not based off of AI. They contain a weight called m_botWeight, and it is randomly generated at the start.
 This weight ranges from 50 to 100 closed and is fixed during the game. A bot with a lower weight is less likely to make risky decisions that take up more than m_botWeight% of its current balance.
 
-#files and links
-1. Github contains project backups: www.github.com/jeffreyqdd
+# files and links
+1. Github contains project backups: http://www.github.com/jeffreyqdd
 
 2. Instructions are located in /text/instructions.txt
 * it can also be accessed in game using the "-rule" command at the start of the game.
