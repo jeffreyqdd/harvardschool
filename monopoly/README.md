@@ -32,9 +32,10 @@ Hence I've used classes and class inheritance to make the code cleaner and more 
 
 ### Tile Class
 
+Below represents my class inheritance
 
                       > Derived class Property
-Base class: Tile ->   > Derived class Station
+Base class: Tile <-   > Derived class Station
                       > Derived class Tax
                       > Derived class Misc
 
@@ -43,7 +44,7 @@ We are storing a pointer to Tile so that we can access the derived classes using
 The one thing in common for ALL the types of tiles is a tick() function (case handling of that specific tile the player lands in)
 
 
-'''cpp
+'''
 virtual void tick()
 {
     //case handling
@@ -55,13 +56,13 @@ This allows the program to choose which tick function is best suited. This resul
 
 ### Player Class
 
-Base class Player ->  > Derived class Bot
+Base class Player <-  > Derived class Bot
 
 The good thing of player monopoly one the computer is that bots can be generated to fill in the place of friends. This calls for a derived class Bot that has the data contained in Player but different decision making functions.
 
 Once again using virtual, these classes can achieve polymorphism.
 
-'''cpp
+'''
 virtual string make_property_decision()
 {
     //returns player decision using cin
