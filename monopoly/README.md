@@ -5,7 +5,7 @@
     * it can also be accessed in game using the "-rule" command at the start of the game.
  
 
-# intro
+# Intro
 This is a C++ version of the popular board game Monopoly. It was written as the final project for the class Introduction to C++ programming. 
 
 
@@ -41,10 +41,10 @@ Hence I've used classes and class inheritance to make the code cleaner and more 
 
 Below represents my class inheritance
 
-                      > Derived class Property
-Base class: Tile <-   > Derived class Station
-                      > Derived class Tax
-                      > Derived class Misc
+                        Derived class Property
+Base class: Tile <-     Derived class Station
+                        Derived class Tax
+                        Derived class Misc
 
 We are storing a pointer to Tile so that we can access the derived classes using virtual function. Virtual functions allow us to take advantage of something called Polymorphism.
 
@@ -63,7 +63,7 @@ This allows the program to choose which tick function is best suited. This resul
 
 ### Player Class
 
-Base class Player <-  > Derived class Bot
+Base class Player <-  Derived class Bot
 
 The good thing of player monopoly one the computer is that bots can be generated to fill in the place of friends. This calls for a derived class Bot that has the data contained in Player but different decision making functions.
 
