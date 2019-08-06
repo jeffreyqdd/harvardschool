@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <thread>
 #include <chrono>
 using namespace std;
@@ -6,7 +7,7 @@ using namespace std;
 
 namespace Display
 {
-    int millisecond = 0; //delay after cout
+    int millisecond = 1300; //delay after cout
 
     void delay(int n)
     {
@@ -26,10 +27,33 @@ namespace Display
 
     void display_tile(string pName, int pPosition, string cName, string cDescription)
     {
-        cout << pName << " has made it to tile " << pPosition << ":\n\n"
+        //switch from 0 to 1 based indexing
+        cout << pName << " has made it to tile " << pPosition + 1 << ":\n\n" 
             << cName << endl
             << ((cDescription == "~") ? "": (cDescription + "\n"))
             << endl;
         delay(millisecond);
+    }
+
+    void display_text(string fileName) 
+    {
+        try
+        {
+            ifstream fin(fileName);
+
+            if(!fin.is_open())
+                throw  "Error: file does not exist";
+
+            while(!fin.eof())
+            {
+                string line; getline(fin, line);
+                cout << line << endl;
+            }
+        }
+        catch(const char* c)
+        {
+            cout << c << endl;
+        }
+        
     }
 }

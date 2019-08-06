@@ -9,10 +9,10 @@ protected:
     string m_name;
     int m_balance;
     int m_position;
-
-    bool is_inJail = false;
-
+    
 public:
+    bool m_isJail = false; //this should be freely accessible
+
     Player(string, int, int);
 
     string get_name() const;
@@ -40,26 +40,30 @@ public:
         return howMany;
     }
 
+    ~Player()
+    {
+        cout << "cleaning player\n";
+    }
 
 };
 
 class Bot: public Player
 {
 private:
-    int m_weight; //for computer use only [50..100] m_botAggressiveness 
+    int m_botWeight; //for computer use only [50..100] aggressiveness (50 passive, 100, aggressive)
 
 public:
     //constructor
     Bot(string, int, int, int);
 
-    // calculates percentage of cost in relation to balance..buys if under certain threshold (m_weight)
+    // calculates percentage of cost in relation to balance..buys if under certain threshold (m_botWeight)
     //takes input cost of property and outputs y/n
     string make_property_decision(int cost) 
     {
         if(cost < m_balance)
         {
             double percentage = (double) cost / (double) m_balance * 100.0;
-            if(percentage < m_weight)
+            if(percentage < m_botWeight)
                 return "y";
             else
                 return "n";
@@ -74,7 +78,7 @@ public:
     // calculates how many houses to buy
     int how_many_house(int cost)
     {
-        return rand()%5 ; //[0,4]
+        return rand()%4 + 1 ; //[1,4]
     }
     
 };
@@ -115,7 +119,6 @@ public:
     ~Tile()
     {
         cout << "destroyed\n";
-        Display::delay(0);
     }
 
 };
@@ -175,22 +178,11 @@ public:
 
 
 
-//commands
-namespace UserInputs
-{
-    vector<string> commands = { "-rules",
-                                "-play",
-                                "-reload",
-                                "-quit" };
-}
-
 //game data
 namespace Game
 {
     vector<Tile*> board;
     Player* person[MAX_PLAYERS];
-    string chance[20];
-    string community[20];
 };
 
 //prototypes

@@ -1,6 +1,6 @@
 //gamerules
 
-#define STARTING_MONEY 1500
+#define STARTING_MONEY 2000
 #define ADD_MONEY 200
 #define MAX_DOUBLE_ROLL 3
 #define BANKRUPTCY 0

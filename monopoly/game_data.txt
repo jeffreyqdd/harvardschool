@@ -37,7 +37,7 @@ Type: Station
 Name: King's_Cross_Station
 Description: Railroad_station
 Owner: ~
-OwnerCost: 100
+OwnerCost: 200
 END
 Type: Property
 Name: Country_Village_Road
@@ -128,7 +128,7 @@ Type: Station
 Name: Thomas_The_Engine_Station
 Description: Railroad_station
 Owner: ~
-OwnerCost: 200
+OwnerCost: 250
 Type: Property
 Name: Potato_Street
 Description: ~
@@ -202,7 +202,7 @@ Type: Station
 Name: Mountain_Side_Station
 Description: Railroad_station
 Owner: ~
-OwnerCost: 400
+OwnerCost: 300
 END
 Type: Property
 Name: Tralfalgar_Square
@@ -283,7 +283,7 @@ Type: Station
 Name: Liverpool_Station
 Description: Railroad_station
 Owner: ~
-OwnerCost: 800
+OwnerCost: 350
 END
 Type: Property
 Name: Futuristic_Town_Road

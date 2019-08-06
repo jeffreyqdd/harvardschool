@@ -16,20 +16,49 @@ using namespace std;
 int main()
 {
     //all main is is UI.
-    //Graphics::display_txt("text/intro.txt");
+
+
+    Display::display_text("text/intro.txt");
+    
     while(true)
     {
-        srand(time(0));
-        
-        load_data();
+        string answer; getline(cin,answer);
 
-        load_player_data();
-        play_game();
+        if(answer == "-rules")
+        {
+            Display::display_text("text/instructions.txt");
+        }
+        else if(answer == "-play")
+        {
+            srand(time(0)); //seed
+
+            //read game and player data
+            load_data(); 
+            load_player_data();
+
+            play_game(); //play
 
 
-        unload_data();
-        
-    }
+            cout << "cleaning in 10 seconds\n";
+            Display::delay(10000);
+
+            unload_data(); //clean up;
+            cout << "Back to main menu...\n";
+        }   
+        else if(answer == "-reload")
+        {
+            Display::display_text("text/intro.txt");
+        }
+        else if(answer == "-quit")
+        {
+            cout << "quiting game..\n";
+            break;
+        }
+        else
+        {
+            cout << "Invalid command\n";
+        }
+    }    
     return 0;
 }
 
@@ -42,75 +71,6 @@ bool is_only() //check if more than 1 people are still in the game (not bankrupt
             cnt++;
 
     return cnt <= 1;
-}
-
-
-//main logic
-
-void play_game()
-{
-    while(!is_only()) //loop until only 1 player left
-    {
-        for(int i = 0; i < 4 && !is_only(); i++) // for each player, first check if that player is the only one left
-        {
-            //player stats
-            Player *currentPlayer = Game::person[i]; //call by reference
-
-            //check if current player is bankrupt
-            if(currentPlayer -> get_balance() < 0) continue;
-
-
-            //display
-            Display::display_player(currentPlayer -> get_name(), currentPlayer -> get_balance());
-            
-            //roll dice
-            int roll1,roll2;
-            do
-            {
-                currentPlayer -> roll_dice(roll1, roll2);
-                
-                Display::display_event(currentPlayer -> get_name() + " Rolled a " + to_string(roll1) + " and a " + to_string(roll2)
-                + ((roll1 == roll2) ? "..double!!!!":""));
-
-                currentPlayer -> set_position(currentPlayer -> get_position() + roll1 + roll2); //walk
-                
-            } while (roll1 == roll2);
-            
-            //check if pass go
-            if(currentPlayer -> get_position() > Game::board.size() - 1)
-            {
-                while(currentPlayer -> get_position() > Game::board.size() - 1) 
-                    currentPlayer -> set_position(currentPlayer -> get_position() - (Game::board.size() - 1)); //segmentation fault prevention.
-        
-                Display::display_event(
-                    currentPlayer -> get_name() + " has passed go $200 has been granted to the player!"
-                );
-                
-                currentPlayer -> credit(200);
-                Display::display_event("You now have: $" + to_string(currentPlayer -> get_balance()));
-
-
-            }
-
-            
-            //get data of the tile of the player's current position.
-
-            Tile* currentTile = Game::board[currentPlayer -> get_position()];
-
-
-            Display::display_tile(currentPlayer -> get_name(), currentPlayer -> get_position(),
-                                  currentTile -> get_name(), currentTile -> get_description());
-
-            //case handling
-            currentTile -> tick(currentPlayer);
-            
-            //check if bankrupt
-            if(currentPlayer -> get_balance() < 0)
-                file_for_bankruptcy(currentPlayer);
-        }
-    }
-
-    cout << "WE HAVE A WINNERRRR!!!!!!" << endl;
 }
 
 //takes player who has gone bankrupt
@@ -133,16 +93,25 @@ void file_for_bankruptcy(Player *p)
     }
 }
 
-
+//takes owner name and returns the player's index in the array of players
+int get_owner_index(string name)
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(Game::person[i] -> get_name() == name)
+            return i;
+    }
+    return -1; //should never be here
+}
 
 //gets player information
 void load_player_data()
 {
-    int humans = 0;
-    cout << "How many human players are there (4 max)? "; //cin >> humans;
+    int humans;
+    cout << "How many human players are there (4 max)? "; cin >> humans;
     humans = min(humans, 4);
 
-    //string dummy; getline(cin, dummy); //flush newline char
+    string dummy; getline(cin, dummy); //flush newline char
 
     for(int i = 0; i < 4; i++)
     {
@@ -161,7 +130,7 @@ void load_player_data()
             //store
             name = "BOT#" + to_string(i+1 - humans);
             
-            Bot *b = new Bot(name, STARTING_MONEY, 0, rand() % 50 + 5);
+            Bot *b = new Bot(name, STARTING_MONEY, 0, rand() % 51 + 50);
             Game::person[i] = b;
         }
         
@@ -169,7 +138,6 @@ void load_player_data()
 
     }
 }
-
 
 //reads game data into the data structs in namespace Game
 void load_data()
@@ -242,6 +210,119 @@ void unload_data()
 
     Game::board.clear();
 }
+
+
+
+//main logic
+void play_game()
+{
+    while(!is_only()) //loop until only 1 player left
+    {
+        for(int i = 0; i < 4 && !is_only(); i++) // for each player, first check if that player is the only one left
+        {
+            //player stats
+            Player *currentPlayer = Game::person[i]; //call by reference
+
+            //check if current player is bankrupt
+            if(currentPlayer -> get_balance() < 0) continue;
+
+
+            //display
+            Display::display_player(currentPlayer -> get_name(), currentPlayer -> get_balance());
+            
+            
+            //dice rolling mechanics
+            int roll1,roll2;
+            //check if in jail or not
+            if(currentPlayer -> m_isJail)
+            {
+                currentPlayer -> set_position(10);
+
+                currentPlayer -> roll_dice(roll1,roll2);
+
+                Display::display_event(currentPlayer -> get_name() + " Rolled a " + to_string(roll1) + " and a " + to_string(roll2)
+                    + ((roll1 == roll2) ? "..double!!!!":""));
+
+                if(roll1 == roll2) 
+                {
+                    //not in jail anymore
+                    currentPlayer -> m_isJail = false;
+                    Display::display_event("You have rolled a double...you have escaped jail.");
+                }
+                else
+                {
+                    Display::display_event("You are still in jail");   
+                }
+                
+            }
+            else
+            {
+        
+                //roll dice
+                do
+                {
+                    currentPlayer -> roll_dice(roll1, roll2);
+                    Display::display_event(currentPlayer -> get_name() + " Rolled a " + to_string(roll1) + " and a " + to_string(roll2)
+                                            + ((roll1 == roll2) ? "..double!!!!":""));
+
+                    currentPlayer -> set_position(currentPlayer -> get_position() + roll1 + roll2); //walk
+                    
+                } while (roll1 == roll2);
+            
+            }
+            
+            
+            
+            //check if pass go
+            if(currentPlayer -> get_position() > Game::board.size() - 1)
+            {
+                while(currentPlayer -> get_position() > Game::board.size() - 1) 
+                    currentPlayer -> set_position(currentPlayer -> get_position() - (Game::board.size() - 1)); //segmentation fault prevention.
+        
+                Display::display_event(
+                    currentPlayer -> get_name() + " has passed go $200 has been granted to the player!"
+                );
+                
+                currentPlayer -> credit(200);
+                Display::display_event("You now have: $" + to_string(currentPlayer -> get_balance()));
+
+
+            }
+
+            
+            //get data of the tile of the player's current position.
+
+            Tile* currentTile = Game::board[currentPlayer -> get_position()];
+
+
+            Display::display_tile(currentPlayer -> get_name(), currentPlayer -> get_position(),
+                                  currentTile -> get_name(), currentTile -> get_description());
+
+            //case handling
+            currentTile -> tick(currentPlayer);
+            
+            //check if bankrupt
+            if(currentPlayer -> get_balance() < 0)
+                file_for_bankruptcy(currentPlayer);
+        }
+    }
+
+    cout << "WE HAVE A WINNERRRR!!!!!!" << endl;
+}
+
+
+// calculate tax based on rate and subtract from player call by reference.
+void applyTax(int rate, Player *p)
+{
+    Display::display_event("You need to pay a tax with rate: " + to_string(rate) + "%"); //display
+
+    int taxDue = (double) p -> get_balance() * ((double) rate / 100.0); //calculate amt due
+    Display::display_event("...." + to_string(taxDue));
+
+    p -> debit(taxDue); //update
+    Display::display_event("You now have: $" + to_string(p -> get_balance()));
+}
+
 
 
 
@@ -325,19 +406,23 @@ void Property::tick(Player* p)
     }
     else
     {
+        //you don't need to pay rent if the owner is in jail
+        int ownerIndex = get_owner_index(m_owner);
+
+        if(Game::person[ownerIndex] -> m_isJail)
+        {
+            Display::display_event("The owner of this property is in Jail. You are exempt");
+            return;
+        }
+
         //pay rent
         Display::display_event("This tile is owned by: " + m_owner + ", " + to_string(m_fee) + " has been deducted from your account");
         p -> debit(m_fee);
         Display::display_event("You now have: $" + to_string(p -> get_balance()));
 
         //give to owner
-        for(int i = 0; i < 4; i++)
-        {
-            if(Game::person[i] -> get_name() == m_owner) //find account of property owner;
-            {
-                Game::person[i] -> credit(m_fee);
-            }
-        }
+        Game::person[ownerIndex] -> credit(m_fee);
+
 
 
     }
@@ -374,35 +459,37 @@ void Station::tick(Player* p)
     }
     else
     {
+        //you don't need to pay rent if the owner is in jail.
+        int ownerIndex = get_owner_index(m_owner);
+
+        if(Game::person[ownerIndex] -> m_isJail)
+        {
+            Display::display_event("The owner of this station is in Jail. You are exempt");
+            return;
+        }
+        
+
         //pay rent
         Display::display_event("This station is owned by: " + m_owner + ", " + to_string(m_ownerCost) + " has been deducted from your account");
         p -> debit(m_ownerCost);
         Display::display_event("You now have: $" + to_string(p -> get_balance()));
 
         //give to owner
-        for(int i = 0; i < 4; i++)
-        {
-            if(Game::person[i] -> get_name() == m_owner)
-            {
-                Game::person[i] -> credit(m_ownerCost);
-            }
-        }
+        Game::person[ownerIndex] -> credit(m_ownerCost);
+
     }
 }
+
+
 //tax method definitions
 void Tax::tick(Player* p)
 {
-    Display::display_event("You need to pay a tax with rate: " + to_string(m_rate) + "%"); //display
-
-    int taxDue = (double) p -> get_balance() * ((double) m_rate / 100.0); //calculate amt due
-    Display::display_event("...." + to_string(taxDue));
-
-    p -> debit(taxDue); //update
-    Display::display_event("You now have: $" + to_string(p -> get_balance()));
+    applyTax(m_rate, p);
 }
+
 //misc method definitions
 void Misc::tick(Player* p)
-{
+{   
     if(p -> get_position() == 0) // go already processed
         return;
     
@@ -413,6 +500,59 @@ void Misc::tick(Player* p)
         p -> credit(m_fee);
 
         Display::display_event("Your balance is now: $ " + to_string(p -> get_balance()));
+    }
+
+    if(m_name == "Jail" && m_description == "Whoops")
+        p -> m_isJail = true;
+
+    else if(m_name == "Community_Chest") //tax, credit, or debit
+    {   
+        Display::display_event("Drawing card..");
+        int randNum = rand() % 10 + 1; ///"draw" card
+
+        if(randNum < 4)
+        {
+            //tax
+            int rate = rand() % 16 + 5; //[5,20]
+            applyTax(rate, p);
+        }
+        else if(randNum < 7)
+        {
+            //debit
+            int toSub = rand() % 191 + 10; //[10, 200]
+            Display::display_event(to_string(toSub) + " was taken out of your account");
+            p -> debit(toSub);
+            Display::display_event("Your balance is now: $ " + to_string(p -> get_balance()));
+        }
+        else
+        {
+            //credit
+            int toAdd = rand() % 191 + 10; //[10, 200]
+            Display::display_event(to_string(toAdd) + " was added to your account");
+            p -> credit(toAdd);
+            Display::display_event("Your balance is now: $ " + to_string(p -> get_balance()));
+        }
+    }
+    else if(m_name == "Chance") //jail, advancement or regression. Only position wise, no new ticks
+    {
+        Display::display_event("Drawing card..");
+        int randNum = rand() % 10 + 1; //"draw"
+
+        if(randNum == 1)
+        {
+            Display::display_event("Go to Jail..");
+            p -> m_isJail = true;
+        }
+        else
+        {
+            int steps = rand() % 13 - 2; // [-2,10]
+            Display::display_event("Walk " + to_string(steps) + " steps");
+            p -> set_position( p -> get_position() + steps);
+
+            Display::display_tile(p -> get_name(), p -> get_position(),
+                                  m_name, m_description);
+        }
+        
     }
 }
 
@@ -425,7 +565,7 @@ Player::Player(string name, int balance, int position) //intializing variables
 }
 Bot::Bot(string name, int balance, int position, int weight) : Player(name, balance, position)
 {
-    m_weight = weight;
+    m_botWeight = weight;
 }
 string Player::get_name() const //returns player name
 {
@@ -539,3 +679,4 @@ Misc::Misc(string type, string name, string description, int fee)
     m_description = description;
     m_fee = fee;
 }
+
