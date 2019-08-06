@@ -31,7 +31,7 @@ Hence I've used classes and class inheritance to make the code cleaner and more 
 
 
 ### Tile Class
-Basic class diagram drawing
+
 
                       > Derived class Property
 Base class: Tile ->   > Derived class Station
