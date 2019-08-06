@@ -1,3 +1,10 @@
+# files and links
+1. Github contains project backups: http://www.github.com/jeffreyqdd
+
+2. Instructions are located in /text/instructions.txt
+    * it can also be accessed in game using the "-rule" command at the start of the game.
+ 
+
 # intro
 This is a C++ version of the popular board game Monopoly. It was written as the final project for the class Introduction to C++ programming. 
 
@@ -15,16 +22,16 @@ The goal of the game is to be the last one standing. A player does this buy send
 ## Tiles
 The game board consists of one type of entity: Tiles. It is true that there are many **types** of tiles, so there exists categories of Tiles:
 1. Property tiles - ownable buy players, and are able to have houses constructed.
-* This means the rent of the property is not static due to the fact that houses raise the rent.
+    * This means the rent of the property is not static due to the fact that houses raise the rent.
 2. Station tiles - railroad stations are similar to property tiles but they cannot have buildings constructed on them.
-* This means the rent of this tile **is** static
+    * This means the rent of this tile **is** static
 3. Tax tiles - althought not great in number, these tiles still constitute part of the monopoly board
-* Taxes work differently from property and station tiles. They are not ownable nor expandable. 
+    * Taxes work differently from property and station tiles. They are not ownable nor expandable. 
 4. Miscellaneous tiles aka misc tiles - These tiles are scattered around the board and are numerious unique case handling is required for each misc tile. A few examples include:
-* Free parking - nothing needs to be done 
-* Chance cards - generate a random chance card
-* Community Chest - generate a random community chest card
-* Jail - these tiles need to be able to change the state of the player to *in jail*.
+    * Free parking - nothing needs to be done 
+    * Chance cards - generate a random chance card
+    * Community Chest - generate a random community chest card
+    * Jail - these tiles need to be able to change the state of the player to *in jail*.
 
 
 Hence I've used classes and class inheritance to make the code cleaner and more efficient: 
@@ -75,13 +82,4 @@ virtual string make_property_decision()
 
 The bots in the game are not based off of AI. They contain a weight called m_botWeight, and it is randomly generated at the start.
 This weight ranges from 50 to 100 closed and is fixed during the game. A bot with a lower weight is less likely to make risky decisions that take up more than m_botWeight% of its current balance.
-
-# files and links
-1. Github contains project backups: http://www.github.com/jeffreyqdd
-
-2. Instructions are located in /text/instructions.txt
-* it can also be accessed in game using the "-rule" command at the start of the game.
- 
-
-
 
