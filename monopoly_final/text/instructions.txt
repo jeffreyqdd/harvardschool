@@ -1,0 +1,64 @@
+---------------- How to Play Monopoly++ ----------------
+
+      Welcome new player and welcome to Monopoly++, a
+            game of monopoly created in C++.
+
+                         Goal:
+              To be the last one standing.
+
+
+                         How? 
+
+         This is achieved through owning property 
+          to try to bankrupt the other players.
+
+
+                       To Start:
+
+1.  To start use the command -play
+
+2.  A user input will then prompt you to enter how many
+    human players there are.
+
+3.  If there are less than four human players, the
+    game will fill it up with bots with various levels
+    of aggressiveness
+
+4.  Buying property will make you the owner of that
+    tile.
+
+5.  When you revisit your property, you can buy houses.
+    Houses will increase the rent fee of your tile.
+
+6.  The amount of rent determines how much a player will
+    pay you when they land on your tile.
+
+7.  The game ends when your balance drops below zero. 
+    Your property will be handed over and you will lose.
+
+
+
+                     Mechanics:
+
+1.  You will start with $2000
+
+2.  Dice rolls are automatic
+
+3.  Cases are automatically handled (Automatic rent playing
+    and property assignment).
+
+4.  To get out of Jail you are required to roll doubles. You
+    have only one roll per turn.
+
+5.  Chance tiles will give you these following outcomes:
+        - Jail
+        - Tile advancements/regression
+
+    Tile advancements only move you. You do not do the condition on the new tile.
+
+
+6.  Community tiles will give you these follwing outcomes:
+        - Money (Credit or Debit)
+        - Tax
+
+7.  When in Jail you cannot collect property rent.

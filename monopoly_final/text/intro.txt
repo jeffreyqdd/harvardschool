@@ -1,0 +1,33 @@
+---------- Welcome to Monopoly in C++ ----------
+
+
+          ...created by Jeffrey Qian...
+
+
+
+Have you ever wanted to play monopoly but didn't have
+the time nor friends? Well Monopoly++ will help address
+		   those needs.
+
+
+1. If you are not familiar with the game, familiarize 
+   yourself with the features and the rules by using
+	
+	-rules
+
+
+2. Ready to play? Then use the command
+	
+	-play
+
+
+3. Scared that you won't remember how to access this
+   screen again? Just type
+	
+	-reload
+
+
+4. Hate this game because you lost? Don't fret. Just
+   use the command
+	
+	-quit

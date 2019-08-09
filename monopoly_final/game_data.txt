@@ -1,0 +1,317 @@
+Type: Misc
+Name: Go
+Description: Collect_200
+Fee: 200
+END
+Type: Property
+Name: Old_Rustic_Shack
+Description: ~
+Owner: ~
+Fee: 5
+OwnerCost: 60
+HouseCost: 50
+HouseMulti: 60
+Limit: 4
+END
+Type: Misc
+Name: Community_Chest
+Description: Draw_from_community_deck
+Fee: 0
+END
+Type: Property
+Name: Old_Town_Road
+Description: ~
+Owner: ~
+Fee: 10
+OwnerCost: 60
+HouseCost: 50
+HouseMulti: 65
+Limit: 4
+END
+Type: Tax
+Name: Income_Tax
+Description: Pay_up
+Rate: 10
+END
+Type: Station
+Name: King's_Cross_Station
+Description: Railroad_station
+Owner: ~
+OwnerCost: 200
+END
+Type: Property
+Name: Country_Village_Road
+Description: ~
+Owner: ~
+Fee: 10
+OwnerCost: 100
+HouseCost: 60
+HouseMulti: 70
+Limit:4
+END
+Type: Misc
+Name: Chance
+Description: Draw_from_chance_deck
+Fee: 0
+END
+Type: Property
+Name: White_Plains_Road
+Description: ~
+Owner: ~
+Fee: 10
+OwnerCost: 100
+HouseCost: 50
+HouseMulti: 70
+Limit: 4
+END
+Type: Property
+Name: Mountain_Lodge_Road
+Description: ~
+Owner: ~
+Fee: 15
+OwnerCost: 120
+HouseCost: 50
+HouseMulti: 80
+Limit: 4
+END
+Type: Misc
+Name: Jail
+Description: Just_visiting
+Fee: 0
+END
+Type: Property
+Name: Tall_Mall
+Description: ~
+Owner: ~
+Fee: 18
+OwnerCost: 120
+HouseCost: 100
+HouseMulti: 90
+Limit: 4
+END
+Type: Misc
+Name: Pay_Day
+Description: Collect_500
+Fee: 500
+END
+Type: Property
+Name: Micro_Outlet
+Description: ~
+Owner: ~
+Fee: 20
+OwnerCost: 140
+HouseCost: 120
+HouseMulti: 110
+Limit: 4
+END
+Type: Property
+Name: New_Town_Road
+Description: ~
+Owner: ~
+Fee: 20
+OwnerCost: 140
+HouseCost: 120
+HouseMulti: 110
+Limit: 4
+END
+Type: Property
+Name: New_Town_Road
+Description: ~
+Owner: ~
+Fee: 20
+OwnerCost: 160
+HouseCost: 130
+HouseMulti: 120
+Limit: 4
+END
+Type: Station
+Name: Thomas_The_Engine_Station
+Description: Railroad_station
+Owner: ~
+OwnerCost: 250
+Type: Property
+Name: Potato_Street
+Description: ~
+Owner: ~
+Fee: 20
+OwnerCost: 180
+HouseCost: 140
+HouseMulti: 120
+Limit: 4
+END
+Type: Property
+Name: Tomato_Street
+Description: ~
+Owner: ~
+Fee: 24
+OwnerCost: 180
+HouseCost: 140
+HouseMulti: 120
+Limit: 4
+END
+Type: Property
+Name: Carrot_Street
+Description: ~
+Owner: ~
+Fee: 30
+OwnerCost: 200 150 140
+HouseCost: 150
+HouseMulti: 140
+Limit: 4
+END
+Type: Misc
+Name: Free_Parking
+Description: Take_a_break
+Fee: 0
+END
+Type: Property
+Name: Standard_Residences
+Description: ~
+Owner: ~
+Fee: 32
+OwnerCost: 220
+HouseCost: 150
+HouseMulti: 150
+Limit: 4
+END
+Type: Misc
+Name: Chance
+Description: Draw_from_chance_deck
+Fee: 0
+Type: Property
+Name: Miniscule_Apartments
+Description: ~
+Owner: ~
+Fee: 35
+OwnerCost: 250
+HouseCost: 150
+HouseMulti: 160
+Limit: 4
+END
+Type: Property
+Name: Chonky_Avenue
+Description: ~
+Owner: ~
+Fee: 40
+OwnerCost: 270
+HouseCost: 150
+HouseMulti: 160
+Limit: 4
+END
+Type: Station
+Name: Mountain_Side_Station
+Description: Railroad_station
+Owner: ~
+OwnerCost: 300
+END
+Type: Property
+Name: Tralfalgar_Square
+Description: ~
+Owner: ~
+Fee: 42
+OwnerCost: 280
+HouseCost: 160
+HouseMulti: 200
+Limit: 4
+END
+Type: Tax
+Name: Absurd_Taxes
+Description: I_guess_new_legislature_was_passed
+Rate: 51
+END
+Type: Property
+Name: Picadily
+Description: ~
+Owner: ~
+Fee: 45
+OwnerCost: 290
+HouseCost: 160
+HouseMulti: 200
+Limit: 4
+END
+Type: Property
+Name: Luxurious_Apartments
+Description: ~
+Owner: ~
+Fee: 47
+OwnerCost: 300
+HouseCost: 160
+HouseMulti: 200
+Limit: 4
+END
+Type: Misc
+Name: Jail
+Description: Whoops
+Fee: 0
+END
+Type: Property
+Name: Mountain_Villa
+Description: ~
+Owner: ~
+Fee: 50
+OwnerCost: 320
+HouseCost: 180
+HouseMulti: 250
+Limit: 4
+END
+Type: Property
+Name: Chungus's_Mansion
+Description: ~
+Owner: ~
+Fee: 60
+OwnerCost: 350
+HouseCost: 180
+HouseMulti: 250
+Limit: 4
+END
+Type: Misc
+Name: Community_Chest
+Description: Draw_from_community_deck
+Fee: 0
+END
+Type: Property
+Name: Crystal_Lake_Mansion
+Description: ~
+Owner: ~
+Fee: 70
+OwnerCost: 250
+HouseCost: 180
+HouseMulti: 250
+Limit: 4
+END
+Type: Station
+Name: Liverpool_Station
+Description: Railroad_station
+Owner: ~
+OwnerCost: 350
+END
+Type: Property
+Name: Futuristic_Town_Road
+Description: ~
+Owner: ~
+Fee: 100
+OwnerCost: 400
+HouseCost: 200
+HouseMulti: 300
+Limit: 4
+END
+Type: Property
+Name: Antimatter_avenue
+Description: ~
+Owner: ~
+Fee: 120
+OwnerCost: 400
+HouseCost: 200
+HouseMulti: 350
+Limit: 4
+END
+Type: Property
+Name: Castle_in_the_Sky
+Description: ~
+Owner: ~
+Fee: 130
+OwnerCost: 1000
+HouseCost: 700
+HouseMulti: 400
+Limit: 10
+END
